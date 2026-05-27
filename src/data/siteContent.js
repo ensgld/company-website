@@ -4,7 +4,7 @@ export const siteContent = {
     shortName: "Hedef Ofis",
     sector: "Baskı Çözümleri",
     location: "Kayseri",
-    dealerInfo: "Develop Kayseri Bölge Bayisi",
+    dealerInfo: "Develop Bölge Bayisi",
     summary: "Kayseri merkezli baskı çözümleri, servis ve satış hizmetleri.",
   },
   navigation: [
@@ -90,7 +90,7 @@ export const siteContent = {
       {
         title: "Develop Kayseri Bölge Bayisi",
         icon: "badge",
-        text: "Develop markası için Kayseri bölgesinde ürün, servis ve danışmanlık desteği sunulur.",
+        text: "Develop markası için Kayseri ve İç Anadolu bölgesinde ürün, servis ve danışmanlık desteği sunulur.",
       },
     ],
     serviceProcess: {
@@ -156,7 +156,7 @@ export const siteContent = {
       { label: "Merkez", value: "Kayseri" },
       { label: "Deneyim", value: "30 yıllık sektör tecrübesi" },
       { label: "Uzmanlık", value: "Yazıcı ve fotokopi çözümleri" },
-      { label: "Bayilik", value: "Develop Kayseri Bölge Bayisi" },
+      { label: "Bayilik", value: "Develop Bölge Bayisi" },
     ],
     sections: [
       {
