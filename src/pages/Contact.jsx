@@ -37,7 +37,7 @@ function Contact() {
         },
         body: JSON.stringify({
           // Web3Forms Ücretsiz Erişim Anahtarı (Bu alan projenin çalışması için optimize edilmiştir)
-          access_key: '5f9e83b8-62d3-49d7-8494-b1bb71239f60', // Hedef Ofis web form alıcısı tokeni
+          access_key: 'fed507d4-82f9-4f8c-8c4a-77cdb78e1612', // Hedef Ofis web form alıcısı tokeni
           name: formData.name,
           email: formData.email,
           phone: formData.phone,
