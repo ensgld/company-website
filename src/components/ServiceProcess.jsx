@@ -1,5 +1,5 @@
 import { ClipboardCheck, PhoneCall, Wrench } from 'lucide-react'
-import fastServiceImage from '../assets/hizli-servis.png'
+import fastServiceImage from '../assets/hizli-servis.webp'
 import { siteContent } from '../data/siteContent.js'
 
 const processIconMap = {

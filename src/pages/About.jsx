@@ -1,5 +1,6 @@
 import introVideo from '../assets/VIDEO.mp4'
-import officeCultureImage from '../assets/ofis-ortami-3.png'
+import officeCultureImage from '../assets/ofis-ortami-3.webp'
+import DocumentMetadata from '../components/DocumentMetadata.jsx'
 import WhyUs from '../components/WhyUs.jsx'
 import { siteContent } from '../data/siteContent.js'
 
@@ -7,7 +8,12 @@ function About() {
   const { about } = siteContent
 
   return (
-    <section className="mx-auto w-[min(1120px,calc(100%-28px))] py-[72px] pt-[58px] md:w-[min(1120px,calc(100%-40px))]">
+    <>
+      <DocumentMetadata
+        title="Hakkımızda | Hedef Ofis Büro Makineleri"
+        description="Hedef Ofis olarak 30 yıllık sektör tecrübemiz ve Develop Kayseri Bölge Bayiliği güvencemizle firmaların baskı altyapılarını daha düzenli, izlenebilir ve verimli hale getirmeyi hedefliyoruz."
+      />
+      <section className="mx-auto w-[min(1120px,calc(100%-28px))] py-[72px] pt-[58px] md:w-[min(1120px,calc(100%-40px))]">
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_360px] lg:items-end">
         <div className="max-w-[760px]">
           <span className="mb-3.5 inline-flex text-[13px] font-extrabold uppercase tracking-[0.08em] text-[#c62828]">
@@ -114,6 +120,7 @@ function About() {
         </div>
       </section>
     </section>
+    </>
   )
 }
 

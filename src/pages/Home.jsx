@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react'
 import { BadgeCheck, Copy, Package, Printer, Wrench } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import machineTypesImage from '../assets/hero/farkli-makine-turleri.png'
-import printingHeroImage from '../assets/hero/office-printing-hero.png'
-import officeImage from '../assets/hero/ofis-ortami.jpg'
-import suppliesImage from '../assets/hero/sarf-malzeme-destegi.png'
-import serviceTechnicianImage from '../assets/hero/teknik-servis-elemani.png'
+import machineTypesImage from '../assets/hero/farkli-makine-turleri.webp'
+import printingHeroImage from '../assets/hero/office-printing-hero.webp'
+import officeImage from '../assets/hero/ofis-ortami.webp'
+import suppliesImage from '../assets/hero/sarf-malzeme-destegi.webp'
+import serviceTechnicianImage from '../assets/hero/teknik-servis-elemani.webp'
 import BrandSupport from '../components/BrandSupport.jsx'
+import DocumentMetadata from '../components/DocumentMetadata.jsx'
 import ServiceProcess from '../components/ServiceProcess.jsx'
 import WhyUs from '../components/WhyUs.jsx'
 import { siteContent } from '../data/siteContent.js'
@@ -42,6 +43,10 @@ function Home() {
 
   return (
     <>
+      <DocumentMetadata
+        title="Hedef Ofis Büro Makineleri | Kayseri Fotokopi ve Yazıcı Servisi"
+        description="Hedef Ofis Büro Makineleri, 30 yıllık sektör deneyimiyle Kayseri'de fotokopi makinesi satışı, teknik servisi, kiralama çözümleri ve Develop Bölge Bayi güvencesi sunmaktadır."
+      />
       <section className="mx-auto grid min-h-0 w-[min(1120px,calc(100%-28px))] grid-cols-1 items-center gap-11 py-9 pb-[52px] md:w-[min(1120px,calc(100%-40px))] lg:min-h-[calc(100vh-150px)] lg:grid-cols-[minmax(0,0.9fr)_minmax(390px,1.1fr)] lg:pt-6">
         <div className="max-w-[630px]">
           <span className="mb-3.5 inline-flex text-[13px] font-extrabold uppercase tracking-[0.08em] text-[#c62828]">

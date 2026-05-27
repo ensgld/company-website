@@ -1,5 +1,7 @@
-import { Mail, MapPin, Phone } from 'lucide-react'
+import { useState } from 'react'
+import { Mail, MapPin, Phone, CheckCircle, AlertTriangle } from 'lucide-react'
 import { FaInstagram } from 'react-icons/fa'
+import DocumentMetadata from '../components/DocumentMetadata.jsx'
 import { siteContent } from '../data/siteContent.js'
 
 const contactIconMap = {
@@ -11,9 +13,66 @@ const contactIconMap = {
 
 function Contact() {
   const { contact } = siteContent
+  
+  // İletişim formu durum yönetimleri
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    subject: 'Teklif İstiyorum',
+    message: ''
+  })
+  const [status, setStatus] = useState('idle') // 'idle' | 'loading' | 'success' | 'error'
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setStatus('loading')
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          // Web3Forms Ücretsiz Erişim Anahtarı (Bu alan projenin çalışması için optimize edilmiştir)
+          access_key: '5f9e83b8-62d3-49d7-8494-b1bb71239f60', // Hedef Ofis web form alıcısı tokeni
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          subject: `[Hedef Ofis Form] ${formData.subject} - ${formData.name}`,
+          message: formData.message,
+          from_name: 'Hedef Ofis Web Sitesi'
+        })
+      })
+
+      const result = await response.json()
+      if (result.success) {
+        setStatus('success')
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          subject: 'Teklif İstiyorum',
+          message: ''
+        })
+      } else {
+        setStatus('error')
+      }
+    } catch (err) {
+      console.error('Form gönderim hatası:', err)
+      setStatus('error')
+    }
+  }
 
   return (
-    <section className="mx-auto w-[min(1120px,calc(100%-28px))] py-[72px] pt-[58px] md:w-[min(1120px,calc(100%-40px))]">
+    <>
+      <DocumentMetadata
+        title="İletişim | Hedef Ofis Büro Makineleri"
+        description="Fotokopi makinesi, yazıcı satışı, teknik servis, kiralama çözümleri ve sarf malzeme talepleriniz için Kayseri Kocasinan'daki ofisimizden veya telefon/e-posta ile bizimle iletişime geçebilirsiniz."
+      />
+      <section className="mx-auto w-[min(1120px,calc(100%-28px))] py-[72px] pt-[58px] md:w-[min(1120px,calc(100%-40px))]">
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_380px] lg:items-end">
         <div className="max-w-[760px]">
           <span className="mb-3.5 inline-flex text-[13px] font-extrabold uppercase tracking-[0.08em] text-[#c62828]">
@@ -98,6 +157,140 @@ function Contact() {
         </div>
       </div>
 
+      {/* İletişim Formu Bölümü */}
+      <section className="mt-[58px] border-t border-[#dbe2ea] pt-[58px]">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_1.2fr] lg:items-start">
+          <div className="max-w-[560px]">
+            <span className="mb-3.5 inline-flex text-[13px] font-extrabold uppercase tracking-[0.08em] text-[#c62828]">
+              Hızlı İletişim Formu
+            </span>
+            <h2 className="mb-3.5 text-[clamp(28px,4vw,42px)] leading-[1.12] tracking-normal text-[#1f2933]">
+              Bize mesajınızı iletin.
+            </h2>
+            <p className="text-[17px] leading-[1.7] text-[#5d6876] max-sm:text-base">
+              Yazıcı ve fotokopi makinesi kiralama, satın alma, teknik servis veya toner ihtiyaçlarınız için formu doldurarak bize doğrudan hızlıca mesaj göndebilirsiniz. 
+            </p>
+            <div className="mt-6 space-y-3">
+              <p className="flex items-center gap-2.5 text-[15px] font-bold text-[#1f2933]">
+                <span className="flex h-1.5 w-1.5 rounded-full bg-[#174ea6]" />
+                En geç 2 saat içerisinde talebinize dönüş sağlanır.
+              </p>
+              <p className="flex items-center gap-2.5 text-[15px] font-bold text-[#1f2933]">
+                <span className="flex h-1.5 w-1.5 rounded-full bg-[#174ea6]" />
+                Kayseri geneline hızlı yerinde teknik servis desteği.
+              </p>
+              <p className="flex items-center gap-2.5 text-[15px] font-bold text-[#1f2933]">
+                <span className="flex h-1.5 w-1.5 rounded-full bg-[#174ea6]" />
+                Sertifikalı Develop bayiliği kalitesiyle ürün danışmanlığı.
+              </p>
+            </div>
+          </div>
+
+          <div className="rounded-lg border border-[#dbe2ea] bg-white p-6 shadow-[0_18px_45px_rgba(18,35,61,0.08)] sm:p-8">
+            {status === 'success' ? (
+              <div className="flex flex-col items-center py-6 text-center">
+                <CheckCircle className="mb-4 text-green-600 animate-bounce" size={56} strokeWidth={1.5} />
+                <h3 className="mb-2 text-2xl font-black text-[#1f2933]">Mesajınız Gönderildi!</h3>
+                <p className="max-w-[360px] text-sm leading-relaxed text-[#5d6876]">
+                  Bizimle iletişime geçtiğiniz için teşekkür ederiz. Mesajınız başarıyla bize ulaştı. 
+                  En kısa sürede sizinle irtibata geçeceğiz.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setStatus('idle')}
+                  className="mt-6 inline-flex min-h-11 items-center justify-center rounded-md bg-[#174ea6] px-6 font-extrabold text-white hover:bg-[#0f3674] transition-colors"
+                >
+                  Yeni Mesaj Gönder
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4">
+                {status === 'error' && (
+                  <div className="flex items-start gap-3 rounded-md bg-red-50 p-4 text-[#c62828] border border-red-100">
+                    <AlertTriangle className="shrink-0" size={20} />
+                    <div>
+                      <strong className="block text-sm font-bold">Gönderim Başarısız!</strong>
+                      <span className="text-xs leading-relaxed">Bir hata oluştu. Lütfen bilgilerinizi kontrol edip tekrar deneyin veya doğrudan telefon ile bize ulaşın.</span>
+                    </div>
+                  </div>
+                )}
+
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <div>
+                    <label className="mb-1.5 block text-xs font-extrabold uppercase tracking-wider text-[#5d6876]">Adınız Soyadınız *</label>
+                    <input
+                      type="text"
+                      required
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      className="w-full rounded-md border border-[#dbe2ea] bg-white px-4 py-3 text-sm text-[#1f2933] outline-none transition focus:border-[#174ea6] focus:ring-1 focus:ring-[#174ea6]"
+                      placeholder="Örn: Ahmet Yılmaz"
+                    />
+                  </div>
+                  <div>
+                    <label className="mb-1.5 block text-xs font-extrabold uppercase tracking-wider text-[#5d6876]">Telefon Numaranız *</label>
+                    <input
+                      type="tel"
+                      required
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      className="w-full rounded-md border border-[#dbe2ea] bg-white px-4 py-3 text-sm text-[#1f2933] outline-none transition focus:border-[#174ea6] focus:ring-1 focus:ring-[#174ea6]"
+                      placeholder="Örn: 0555 123 45 67"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="mb-1.5 block text-xs font-extrabold uppercase tracking-wider text-[#5d6876]">E-posta Adresiniz</label>
+                  <input
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="w-full rounded-md border border-[#dbe2ea] bg-white px-4 py-3 text-sm text-[#1f2933] outline-none transition focus:border-[#174ea6] focus:ring-1 focus:ring-[#174ea6]"
+                    placeholder="Örn: name@company.com"
+                  />
+                </div>
+
+                <div>
+                  <label className="mb-1.5 block text-xs font-extrabold uppercase tracking-wider text-[#5d6876]">İletişim Konusu</label>
+                  <select
+                    value={formData.subject}
+                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                    className="w-full rounded-md border border-[#dbe2ea] bg-white px-4 py-3 text-sm text-[#1f2933] outline-none transition focus:border-[#174ea6] focus:ring-1 focus:ring-[#174ea6]"
+                  >
+                    <option value="Teklif İstiyorum">Fotokopi / Yazıcı Kiralama Teklifi</option>
+                    <option value="Teknik Servis Talebi">Cihaz Arıza & Teknik Servis Desteği</option>
+                    <option value="Sarf Malzeme Talebi">Toner / Sarf Malzeme Alımı</option>
+                    <option value="Satış ve Ürün Bilgisi">Develop / Yeni Yazıcı Satın Alma</option>
+                    <option value="Genel Sorular">Genel Soru / Görüş & İstek</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="mb-1.5 block text-xs font-extrabold uppercase tracking-wider text-[#5d6876]">Mesajınız *</label>
+                  <textarea
+                    required
+                    rows={4}
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    className="w-full rounded-md border border-[#dbe2ea] bg-white px-4 py-3 text-sm text-[#1f2933] outline-none transition focus:border-[#174ea6] focus:ring-1 focus:ring-[#174ea6] resize-none"
+                    placeholder="Talebinizi buraya detaylıca yazabilirsiniz..."
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={status === 'loading'}
+                  className="inline-flex min-h-12 w-full items-center justify-center rounded-md bg-[#174ea6] px-[18px] font-extrabold text-white visited:text-white no-underline hover:bg-[#0f3674] hover:shadow-[0_8px_20px_rgba(23,78,166,0.2)] disabled:opacity-50 transition-all duration-300"
+                >
+                  {status === 'loading' ? 'Gönderiliyor...' : 'Mesajı Gönder'}
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
+      </section>
+
       <section className="mt-[58px] grid grid-cols-1 items-center gap-8 rounded-lg border border-[#dbe2ea] bg-white p-6 shadow-[0_18px_45px_rgba(18,35,61,0.08)] lg:grid-cols-[0.9fr_1.1fr] lg:p-8">
         <div>
           <span className="mb-3 block text-[13px] font-extrabold uppercase tracking-[0.08em] text-[#c62828]">
@@ -181,6 +374,7 @@ function Contact() {
         </div>
       </section>
     </section>
+    </>
   )
 }
 

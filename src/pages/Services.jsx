@@ -1,8 +1,9 @@
 import { BadgeCheck, Copy, Package, Printer, Repeat2, Wrench } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import serviceWorkflowImage from '../assets/is-akisi-yerinde-servis.png'
+import serviceWorkflowImage from '../assets/is-akisi-yerinde-servis.webp'
 import BrandSupport from '../components/BrandSupport.jsx'
 import DeviceGroups from '../components/DeviceGroups.jsx'
+import DocumentMetadata from '../components/DocumentMetadata.jsx'
 import { siteContent } from '../data/siteContent.js'
 
 const serviceIconMap = {
@@ -18,7 +19,12 @@ function Services() {
   const { services, servicesPage } = siteContent
 
   return (
-    <section className="mx-auto w-[min(1120px,calc(100%-28px))] py-[72px] pt-[58px] md:w-[min(1120px,calc(100%-40px))]">
+    <>
+      <DocumentMetadata
+        title="Hizmetlerimiz | Hedef Ofis Büro Makineleri"
+        description="Yazıcı, fotokopi makinesi satışı, teknik servis, bakım ve kopya başı kiralık fotokopi makinesi desteği ile işletmenizin baskı altyapısını güçlendiriyoruz."
+      />
+      <section className="mx-auto w-[min(1120px,calc(100%-28px))] py-[72px] pt-[58px] md:w-[min(1120px,calc(100%-40px))]">
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_380px] lg:items-end">
         <div className="max-w-[760px]">
           <span className="mb-3.5 inline-flex text-[13px] font-extrabold uppercase tracking-[0.08em] text-[#c62828]">
@@ -78,9 +84,9 @@ function Services() {
                   {String(index + 1).padStart(2, '0')} / {service.tag}
                 </span>
               </div>
-              <h2 className="mb-3.5 text-[clamp(26px,3vw,34px)] leading-[1.12] tracking-normal text-[#1f2933]">
+              <h3 className="mb-3.5 text-[clamp(26px,3vw,34px)] leading-[1.12] tracking-normal text-[#1f2933]">
                 {service.title}
-              </h2>
+              </h3>
               <p className="text-[17px] leading-[1.7] text-[#5d6876] max-sm:text-base">
                 {service.text}
               </p>
@@ -135,6 +141,7 @@ function Services() {
         </Link>
       </section>
     </section>
+    </>
   )
 }
 
