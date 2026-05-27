@@ -340,7 +340,7 @@ export const siteContent = {
         icon: "map",
         value:
           "Sahabiye Mah. İstasyon Cad Hürriyet Apt. Bina No:60 Daire No:20, 38280 Kocasinan/Kayseri",
-        href: "https://www.google.com/maps/search/?api=1&query=Sahabiye%20Mah.%20%C4%B0stasyon%20Cad.%20No:60,%20Kocasinan,%20Kayseri",
+        href: "https://www.google.com/maps/search/?api=1&query=HEDEF%20OF%C4%B0S%20OTOMASYON%20S%C4%B0STEMLER%C4%B0%20SANAY%C4%B0%20VE%20T%C4%B0CARET-%20TEK%C4%B0N%20GELD%C4%B0",
         actionLabel: "Haritada aç",
         note: "Kayseri/Kocasinan adresimize ulaşım için harita bağlantısını kullanabilirsiniz.",
       },
@@ -350,9 +350,9 @@ export const siteContent = {
       title: "Kayseri/Kocasinan adresimiz",
       text: "Sahabiye Mah. İstasyon Cad. Hürriyet Apt. Bina No:60 Daire No:20, 38280 Kocasinan/Kayseri adresinden bize ulaşabilirsiniz.",
       mapUrl:
-        "https://www.google.com/maps/search/?api=1&query=Sahabiye%20Mah.%20%C4%B0stasyon%20Cad.%20No:60,%20Kocasinan,%20Kayseri",
+        "https://www.google.com/maps/search/?api=1&query=HEDEF%20OF%C4%B0S%20OTOMASYON%20S%C4%B0STEMLER%C4%B0%20SANAY%C4%B0%20VE%20T%C4%B0CARET-%20TEK%C4%B0N%20GELD%C4%B0",
       embedUrl:
-        "https://maps.google.com/maps?q=Sahabiye%20Mah.%20%C4%B0stasyon%20Cad.%20No:60,%20Kocasinan,%20Kayseri&t=&z=16&ie=UTF8&iwloc=&output=embed",
+        "https://maps.google.com/maps?q=HEDEF%20OF%C4%B0S%20OTOMASYON%20S%C4%B0STEMLER%C4%B0%20SANAY%C4%B0%20VE%20T%C4%B0CARET-%20TEK%C4%B0N%20GELD%C4%B0&t=&z=16&ie=UTF8&iwloc=&output=embed",
     },
     social: {
       eyebrow: "Sosyal Medya",
