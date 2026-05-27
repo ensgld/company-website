@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hedefofis.com.tr/sitemap.xml
+Sitemap: https://hedefofis.com/sitemap.xml

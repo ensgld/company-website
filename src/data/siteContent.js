@@ -330,8 +330,8 @@ export const siteContent = {
       {
         label: "E-posta",
         icon: "mail",
-        value: "hedefofis@hotmail.com",
-        href: "mailto:hedefofis@hotmail.com",
+        value: "satis@hedefofis.com",
+        href: "mailto:satis@hedefofis.com",
         actionLabel: "E-posta gönder",
         note: "Ürün, servis ve teklif taleplerinizi e-posta ile iletebilirsiniz.",
       },
