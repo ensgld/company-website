@@ -26,7 +26,7 @@ export const siteContent = {
     secondaryAction: { label: "Teklif Al", to: "/iletisim" },
     summaryItems: [
       { label: "Merkez", value: "Kayseri" },
-      { label: "Kapsam", value: "Satış, servis ve kiralama" },
+      { label: "Kapsam", value: "Satış, servis, kiralama ve sarf malzeme" },
       { label: "Yetkinlik", value: "Develop Bölge Bayisi" },
     ],
     imageCaption:

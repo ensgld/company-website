@@ -146,12 +146,21 @@ function Home() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-[18px] md:grid-cols-2 xl:grid-cols-5">
-          {home.highlights.map((item, index) => (
-            <article
-              className="rounded-lg border border-[#dbe2ea] bg-white p-6 shadow-[0_10px_26px_rgba(18,35,61,0.06)]"
-              key={item.title}
-            >
+        <div className="grid grid-cols-1 gap-[18px] md:grid-cols-2 lg:grid-cols-6">
+          {home.highlights.map((item, index) => {
+            let spanClass = "";
+            if (index === 0 || index === 1 || index === 2) {
+              spanClass = "lg:col-span-2";
+            } else if (index === 3) {
+              spanClass = "lg:col-span-3";
+            } else if (index === 4) {
+              spanClass = "lg:col-span-3 md:col-span-2";
+            }
+            return (
+              <article
+                className={`rounded-lg border border-[#dbe2ea] bg-white p-6 shadow-[0_10px_26px_rgba(18,35,61,0.06)] ${spanClass}`}
+                key={item.title}
+              >
               <div className="mb-[18px] flex items-center justify-between gap-4">
                 <span className="inline-flex h-11 w-11 items-center justify-center rounded-md bg-[#174ea6] text-white">
                   {(() => {
@@ -170,7 +179,7 @@ function Home() {
                 {item.text}
               </p>
             </article>
-          ))}
+          )})}
         </div>
       </section>
 
