@@ -33,6 +33,18 @@ export const siteContent = {
     label: "WhatsApp'tan iletişime geç",
     href: `https://wa.me/${WHATSAPP_NUMBER}`,
   },
+  contactInfo: {
+    phone: PHONE_DISPLAY,
+    phoneHref: `tel:${PHONE}`,
+    whatsappHref: `https://wa.me/${WHATSAPP_NUMBER}`,
+    email: EMAIL,
+    emailHref: `mailto:${EMAIL}`,
+    address:
+      "Sahabiye Mah. İstasyon Cad. Hürriyet Apt. Bina No:60 Daire No:20, 38280 Kocasinan/Kayseri",
+    mapUrl: MAPS_SEARCH_URL,
+    hours: "Pazartesi – Cumartesi · 08:30 – 18:00",
+    instagram: INSTAGRAM_URL,
+  },
   home: {
     eyebrow: "Baskı Çözümleri",
     title: "Ofisinizin baskı süreçleri için satış ve servis desteği.",
@@ -45,6 +57,13 @@ export const siteContent = {
       { label: "Kapsam", value: "Satış, servis, kiralama ve sarf malzeme" },
       { label: "Yetkinlik", value: "Develop Bölge Bayisi" },
     ],
+    stats: [
+      { value: "30+", label: "Yıllık sektör deneyimi" },
+      { value: "8", label: "Desteklenen marka" },
+      { value: "2 saat", label: "İçinde talebe dönüş" },
+      { value: "Kayseri", label: "Geneline yerinde servis" },
+    ],
+    callAction: { label: "Hemen Ara" },
     imageCaption:
       "Ofis baskı altyapılarında doğru cihaz, doğru servis ve sürdürülebilir kullanım desteği.",
     heroSlides: [
