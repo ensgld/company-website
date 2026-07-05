@@ -24,14 +24,14 @@ function DeviceGroups({ className = '' }) {
     <section className={className}>
       <div className="mb-[34px] grid grid-cols-1 gap-6 lg:grid-cols-[0.85fr_1fr] lg:items-end">
         <div>
-          <span className="mb-3.5 inline-flex text-[13px] font-extrabold uppercase tracking-[0.08em] text-[#c62828]">
+          <span className="mb-3.5 inline-flex text-[13px] font-extrabold uppercase tracking-[0.08em] text-accent">
             {deviceGroups.eyebrow}
           </span>
-          <h2 className="mb-0 text-[clamp(28px,4vw,42px)] leading-[1.12] tracking-normal text-[#1f2933]">
+          <h2 className="mb-0 text-[clamp(28px,4vw,42px)] leading-[1.12] tracking-normal text-ink">
             {deviceGroups.title}
           </h2>
         </div>
-        <p className="text-[17px] leading-[1.7] text-[#5d6876] max-sm:text-base lg:max-w-[560px]">
+        <p className="text-[17px] leading-[1.7] text-muted max-sm:text-base lg:max-w-[560px]">
           {deviceGroups.description}
         </p>
       </div>
@@ -42,21 +42,21 @@ function DeviceGroups({ className = '' }) {
 
           return (
             <article
-              className="rounded-lg border border-[#dbe2ea] bg-white p-6 shadow-[0_10px_26px_rgba(18,35,61,0.06)]"
+              className="rounded-lg border border-line bg-white p-6 shadow-card"
               key={item.title}
             >
               <div className="mb-5 flex items-center justify-between gap-4">
-                <span className="inline-flex h-11 w-11 items-center justify-center rounded-md bg-[#174ea6] text-white">
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-md bg-primary text-white">
                   {Icon ? <Icon aria-hidden="true" size={22} strokeWidth={2.2} /> : null}
                 </span>
-                <span className="rounded-md bg-[#dcfce7] px-3 py-1 text-xs font-extrabold uppercase tracking-[0.06em] text-[#166534]">
+                <span className="rounded-md bg-success-soft px-3 py-1 text-xs font-extrabold uppercase tracking-[0.06em] text-success">
                   Servis
                 </span>
               </div>
-              <h3 className="mb-2.5 text-xl leading-tight tracking-normal text-[#1f2933]">
+              <h3 className="mb-2.5 text-xl leading-tight tracking-normal text-ink">
                 {item.title}
               </h3>
-              <p className="text-[16px] leading-[1.7] text-[#5d6876]">
+              <p className="text-[16px] leading-[1.7] text-muted">
                 {item.text}
               </p>
             </article>

@@ -27,8 +27,8 @@ function Header() {
           <NavLink
             className={({ isActive }) =>
               [
-                'rounded-md px-2.5 py-2.5 text-[15px] font-bold text-[#5d6876] no-underline transition hover:bg-[#eef2f6] hover:text-[#0f3674] sm:px-3',
-                isActive ? 'bg-[#eef2f6] text-[#0f3674]' : '',
+                'rounded-md px-2.5 py-2.5 text-[15px] font-bold text-muted no-underline transition hover:bg-surface hover:text-primary-dark sm:px-3',
+                isActive ? 'bg-surface text-primary-dark' : '',
               ].join(' ')
             }
             key={item.to}

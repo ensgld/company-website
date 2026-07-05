@@ -15,14 +15,14 @@ function ServiceProcess({ className = '' }) {
     <section className={className}>
       <div className="mb-[34px] grid grid-cols-1 gap-6 lg:grid-cols-[0.85fr_1fr] lg:items-end">
         <div>
-          <span className="mb-3.5 inline-flex text-[13px] font-extrabold uppercase tracking-[0.08em] text-[#c62828]">
+          <span className="mb-3.5 inline-flex text-[13px] font-extrabold uppercase tracking-[0.08em] text-accent">
             {serviceProcess.eyebrow}
           </span>
-          <h2 className="mb-0 text-[clamp(28px,4vw,42px)] leading-[1.12] tracking-normal text-[#1f2933]">
+          <h2 className="mb-0 text-[clamp(28px,4vw,42px)] leading-[1.12] tracking-normal text-ink">
             {serviceProcess.title}
           </h2>
         </div>
-        <p className="text-[17px] leading-[1.7] text-[#5d6876] max-sm:text-base lg:max-w-[560px]">
+        <p className="text-[17px] leading-[1.7] text-muted max-sm:text-base lg:max-w-[560px]">
           {serviceProcess.description}
         </p>
       </div>
@@ -34,21 +34,21 @@ function ServiceProcess({ className = '' }) {
 
             return (
               <article
-                className="rounded-lg border border-[#dbe2ea] bg-white p-6 shadow-[0_10px_26px_rgba(18,35,61,0.06)]"
+                className="rounded-lg border border-line bg-white p-6 shadow-card"
                 key={step.title}
               >
                 <div className="mb-5 flex items-center justify-between gap-4">
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-md bg-[#174ea6] text-white">
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-md bg-primary text-white">
                     {Icon ? <Icon aria-hidden="true" size={22} strokeWidth={2.2} /> : null}
                   </span>
-                  <span className="rounded-md bg-[#dcfce7] px-3 py-1 text-xs font-extrabold uppercase tracking-[0.06em] text-[#166534]">
+                  <span className="rounded-md bg-success-soft px-3 py-1 text-xs font-extrabold uppercase tracking-[0.06em] text-success">
                     Adım {index + 1}
                   </span>
                 </div>
-                <h3 className="mb-2.5 text-xl leading-tight tracking-normal text-[#1f2933]">
+                <h3 className="mb-2.5 text-xl leading-tight tracking-normal text-ink">
                   {step.title}
                 </h3>
-                <p className="text-[16px] leading-[1.7] text-[#5d6876]">
+                <p className="text-[16px] leading-[1.7] text-muted">
                   {step.text}
                 </p>
               </article>
@@ -56,14 +56,14 @@ function ServiceProcess({ className = '' }) {
           })}
         </div>
 
-        <div className="overflow-hidden rounded-lg border border-[#dbe2ea] bg-white p-3 shadow-[0_18px_45px_rgba(18,35,61,0.08)]">
+        <div className="overflow-hidden rounded-lg border border-line bg-white p-3 shadow-elevated">
           <img
-            className="aspect-[16/9] h-full w-full rounded-md bg-[#eef2f6] object-contain"
+            className="aspect-[16/9] h-full w-full rounded-md bg-surface object-contain"
             src={fastServiceImage}
             alt="Hızlı teknik servis süreci"
           />
-          <div className="mt-3 border-t border-[#dbe2ea] px-2 py-4">
-            <p className="text-[15px] font-bold leading-relaxed text-[#1f2933]">
+          <div className="mt-3 border-t border-line px-2 py-4">
+            <p className="text-[15px] font-bold leading-relaxed text-ink">
               {serviceProcess.imageCaption}
             </p>
           </div>

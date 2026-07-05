@@ -1,9 +1,32 @@
 @import "tailwindcss";
 
+/* Tasarım sistemi token'ları — renkler, gölgeler ve tipografi tek kaynaktan.
+   Bu token'lar Tailwind utility'leri üretir: bg-primary, text-ink, border-line,
+   shadow-card vb. Renk değişimi artık tek yerden yapılır. */
+@theme {
+  --color-primary: #174ea6;
+  --color-primary-dark: #0f3674;
+  --color-accent: #c62828;
+  --color-ink: #1f2933;
+  --color-muted: #5d6876;
+  --color-line: #dbe2ea;
+  --color-surface: #eef2f6;
+  --color-canvas: #f7f8fb;
+  --color-success: #166534;
+  --color-success-soft: #dcfce7;
+  --color-whatsapp: #16a34a;
+  --color-whatsapp-dark: #15803d;
+
+  --shadow-card: 0 10px 26px rgba(18, 35, 61, 0.06);
+  --shadow-elevated: 0 18px 45px rgba(18, 35, 61, 0.08);
+  --shadow-elevated-lg: 0 18px 45px rgba(18, 35, 61, 0.1);
+
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+}
+
 :root {
-  font-family:
-    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    sans-serif;
+  font-family: var(--font-sans);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -21,8 +44,8 @@ html {
 body {
   margin: 0;
   min-width: 320px;
-  background: #f7f8fb;
-  color: #1f2933;
+  background: var(--color-canvas);
+  color: var(--color-ink);
 }
 
 button,
@@ -38,4 +61,31 @@ img {
 
 #root {
   min-height: 100vh;
+}
+
+/* Tailwind preflight başlık ağırlığını sıfırlar; kurumsal vurgu için
+   varsayılan başlık ağırlığını belirliyoruz. Açık font-* sınıfı olan
+   başlıklar (font-black vb.) bunu ezmeye devam eder. */
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 700;
+  }
+}
+
+/* Hareket hassasiyeti olan kullanıcılar için animasyonları yumuşat. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }

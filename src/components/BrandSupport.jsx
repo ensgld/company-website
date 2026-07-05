@@ -26,14 +26,14 @@ function BrandSupport({ className = '' }) {
     <section className={className}>
       <div className="mb-[34px] grid grid-cols-1 gap-6 lg:grid-cols-[0.85fr_1fr] lg:items-end">
         <div>
-          <span className="mb-3.5 inline-flex text-[13px] font-extrabold uppercase tracking-[0.08em] text-[#c62828]">
+          <span className="mb-3.5 inline-flex text-[13px] font-extrabold uppercase tracking-[0.08em] text-accent">
             {brands.eyebrow}
           </span>
-          <h2 className="mb-0 text-[clamp(28px,4vw,42px)] leading-[1.12] tracking-normal text-[#1f2933]">
+          <h2 className="mb-0 text-[clamp(28px,4vw,42px)] leading-[1.12] tracking-normal text-ink">
             {brands.title}
           </h2>
         </div>
-        <p className="text-[17px] leading-[1.7] text-[#5d6876] max-sm:text-base lg:max-w-[560px]">
+        <p className="text-[17px] leading-[1.7] text-muted max-sm:text-base lg:max-w-[560px]">
           {brands.description}
         </p>
       </div>
@@ -41,7 +41,7 @@ function BrandSupport({ className = '' }) {
       <div className="grid grid-cols-2 gap-[14px] md:grid-cols-4">
         {brands.items.map((brand) => (
           <article
-            className="flex min-h-[112px] items-center justify-center rounded-lg border border-[#dbe2ea] bg-white p-5 shadow-[0_10px_26px_rgba(18,35,61,0.05)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_36px_rgba(18,35,61,0.1)]"
+            className="flex min-h-[112px] items-center justify-center rounded-lg border border-line bg-white p-5 shadow-[0_10px_26px_rgba(18,35,61,0.05)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_36px_rgba(18,35,61,0.1)]"
             key={brand.key}
           >
             <img

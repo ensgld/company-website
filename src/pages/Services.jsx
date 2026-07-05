@@ -27,24 +27,24 @@ function Services() {
       <section className="mx-auto w-[min(1120px,calc(100%-28px))] py-[72px] pt-[58px] md:w-[min(1120px,calc(100%-40px))]">
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_380px] lg:items-end">
         <div className="max-w-[760px]">
-          <span className="mb-3.5 inline-flex text-[13px] font-extrabold uppercase tracking-[0.08em] text-[#c62828]">
+          <span className="mb-3.5 inline-flex text-[13px] font-extrabold uppercase tracking-[0.08em] text-accent">
             {servicesPage.eyebrow}
           </span>
-          <h1 className="mb-[22px] text-[clamp(38px,6vw,64px)] leading-[1.02] tracking-normal text-[#1f2933]">
+          <h1 className="mb-[22px] text-[clamp(38px,6vw,64px)] leading-[1.02] tracking-normal text-ink">
             {servicesPage.title}
           </h1>
-          <p className="text-[17px] leading-[1.7] text-[#5d6876] max-sm:text-base">
+          <p className="text-[17px] leading-[1.7] text-muted max-sm:text-base">
             {servicesPage.description}
           </p>
         </div>
 
-        <div className="rounded-lg border border-[#dbe2ea] bg-white shadow-[0_18px_45px_rgba(18,35,61,0.08)]">
+        <div className="rounded-lg border border-line bg-white shadow-elevated">
           {servicesPage.summaryItems.map((item) => (
-            <div className="border-t border-[#dbe2ea] px-5 py-4 first:border-t-0" key={item.label}>
-              <span className="mb-1 block text-[12px] font-extrabold uppercase tracking-[0.08em] text-[#c62828]">
+            <div className="border-t border-line px-5 py-4 first:border-t-0" key={item.label}>
+              <span className="mb-1 block text-[12px] font-extrabold uppercase tracking-[0.08em] text-accent">
                 {item.label}
               </span>
-              <strong className="block text-[16px] leading-snug text-[#1f2933]">
+              <strong className="block text-[16px] leading-snug text-ink">
                 {item.value}
               </strong>
             </div>
@@ -52,17 +52,17 @@ function Services() {
         </div>
       </div>
 
-      <div className="mt-[58px] border-t border-[#dbe2ea] pt-[58px]">
+      <div className="mt-[58px] border-t border-line pt-[58px]">
         <div className="mb-[34px] grid grid-cols-1 gap-6 lg:grid-cols-[0.85fr_1fr] lg:items-end">
           <div>
-            <span className="mb-3.5 inline-flex text-[13px] font-extrabold uppercase tracking-[0.08em] text-[#c62828]">
+            <span className="mb-3.5 inline-flex text-[13px] font-extrabold uppercase tracking-[0.08em] text-accent">
               {servicesPage.sectionEyebrow}
             </span>
-            <h2 className="mb-0 text-[clamp(28px,4vw,42px)] leading-[1.12] tracking-normal text-[#1f2933]">
+            <h2 className="mb-0 text-[clamp(28px,4vw,42px)] leading-[1.12] tracking-normal text-ink">
               {servicesPage.sectionTitle}
             </h2>
           </div>
-          <p className="text-[17px] leading-[1.7] text-[#5d6876] max-sm:text-base lg:max-w-[520px]">
+          <p className="text-[17px] leading-[1.7] text-muted max-sm:text-base lg:max-w-[520px]">
             {servicesPage.sectionDescription}
           </p>
         </div>
@@ -70,24 +70,24 @@ function Services() {
         <div className="grid grid-cols-1 gap-[18px] lg:grid-cols-2">
           {services.map((service, index) => (
             <article
-              className="rounded-lg border border-[#dbe2ea] bg-white p-6 shadow-[0_10px_26px_rgba(18,35,61,0.06)]"
+              className="rounded-lg border border-line bg-white p-6 shadow-card"
               key={service.title}
             >
               <div className="mb-5 flex items-center justify-between gap-4">
-                <span className="inline-flex h-11 w-11 items-center justify-center rounded-md bg-[#174ea6] text-white">
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-md bg-primary text-white">
                   {(() => {
                     const Icon = serviceIconMap[service.icon]
                     return Icon ? <Icon aria-hidden="true" size={22} strokeWidth={2.2} /> : null
                   })()}
                 </span>
-                <span className="rounded-md bg-[#eef2f6] px-3 py-1 text-xs font-extrabold uppercase tracking-[0.06em] text-[#0f3674]">
+                <span className="rounded-md bg-surface px-3 py-1 text-xs font-extrabold uppercase tracking-[0.06em] text-primary-dark">
                   {String(index + 1).padStart(2, '0')} / {service.tag}
                 </span>
               </div>
-              <h3 className="mb-3.5 text-[clamp(26px,3vw,34px)] leading-[1.12] tracking-normal text-[#1f2933]">
+              <h3 className="mb-3.5 text-[clamp(26px,3vw,34px)] leading-[1.12] tracking-normal text-ink">
                 {service.title}
               </h3>
-              <p className="text-[17px] leading-[1.7] text-[#5d6876] max-sm:text-base">
+              <p className="text-[17px] leading-[1.7] text-muted max-sm:text-base">
                 {service.text}
               </p>
             </article>
@@ -95,46 +95,46 @@ function Services() {
         </div>
       </div>
 
-      <section className="mt-[58px] grid grid-cols-1 items-center gap-8 border-t border-[#dbe2ea] pt-[58px] lg:grid-cols-[0.9fr_1.1fr]">
+      <section className="mt-[58px] grid grid-cols-1 items-center gap-8 border-t border-line pt-[58px] lg:grid-cols-[0.9fr_1.1fr]">
         <div className="max-w-[560px]">
-          <span className="mb-3.5 inline-flex text-[13px] font-extrabold uppercase tracking-[0.08em] text-[#c62828]">
+          <span className="mb-3.5 inline-flex text-[13px] font-extrabold uppercase tracking-[0.08em] text-accent">
             {servicesPage.workflow.eyebrow}
           </span>
-          <h2 className="mb-3.5 text-[clamp(28px,4vw,42px)] leading-[1.12] tracking-normal text-[#1f2933]">
+          <h2 className="mb-3.5 text-[clamp(28px,4vw,42px)] leading-[1.12] tracking-normal text-ink">
             {servicesPage.workflow.title}
           </h2>
-          <p className="text-[17px] leading-[1.7] text-[#5d6876] max-sm:text-base">
+          <p className="text-[17px] leading-[1.7] text-muted max-sm:text-base">
             {servicesPage.workflow.description}
           </p>
         </div>
 
-        <div className="overflow-hidden rounded-lg border border-[#dbe2ea] bg-white p-3 shadow-[0_18px_45px_rgba(18,35,61,0.08)]">
+        <div className="overflow-hidden rounded-lg border border-line bg-white p-3 shadow-elevated">
           <img
-            className="aspect-[16/9] h-full w-full rounded-md bg-[#eef2f6] object-contain"
+            className="aspect-[16/9] h-full w-full rounded-md bg-surface object-contain"
             src={serviceWorkflowImage}
             alt={servicesPage.workflow.imageAlt}
           />
         </div>
       </section>
 
-      <DeviceGroups className="mt-[58px] border-t border-[#dbe2ea] pt-[58px]" />
+      <DeviceGroups className="mt-[58px] border-t border-line pt-[58px]" />
 
-      <BrandSupport className="mt-[58px] border-t border-[#dbe2ea] pt-[58px]" />
+      <BrandSupport className="mt-[58px] border-t border-line pt-[58px]" />
 
-      <section className="mt-[58px] grid grid-cols-1 items-center gap-6 rounded-lg border border-[#dbe2ea] bg-white p-6 shadow-[0_18px_45px_rgba(18,35,61,0.08)] lg:grid-cols-[1fr_auto] lg:p-8">
+      <section className="mt-[58px] grid grid-cols-1 items-center gap-6 rounded-lg border border-line bg-white p-6 shadow-elevated lg:grid-cols-[1fr_auto] lg:p-8">
         <div>
-          <span className="mb-3 block text-[13px] font-extrabold uppercase tracking-[0.08em] text-[#c62828]">
+          <span className="mb-3 block text-[13px] font-extrabold uppercase tracking-[0.08em] text-accent">
             Danışmanlık
           </span>
-          <h2 className="mb-3 text-[clamp(26px,3vw,36px)] leading-[1.12] tracking-normal text-[#1f2933]">
+          <h2 className="mb-3 text-[clamp(26px,3vw,36px)] leading-[1.12] tracking-normal text-ink">
             {servicesPage.cta.title}
           </h2>
-          <p className="text-[17px] leading-[1.7] text-[#5d6876] max-sm:text-base">
+          <p className="text-[17px] leading-[1.7] text-muted max-sm:text-base">
             {servicesPage.cta.text}
           </p>
         </div>
         <Link
-          className="inline-flex min-h-12 w-full items-center justify-center rounded-md bg-[#174ea6] px-[18px] font-extrabold text-white visited:text-white no-underline hover:bg-[#0f3674] sm:w-auto"
+          className="inline-flex min-h-12 w-full items-center justify-center rounded-md bg-primary px-[18px] font-extrabold text-white visited:text-white no-underline hover:bg-primary-dark sm:w-auto"
           to={servicesPage.cta.action.to}
         >
           {servicesPage.cta.action.label}
