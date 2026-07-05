@@ -42,7 +42,7 @@ function DeviceGroups({ className = '' }) {
 
           return (
             <article
-              className="rounded-lg border border-line bg-white p-6 shadow-card"
+              className="rounded-lg border border-line bg-white p-6 shadow-card transition hover:-translate-y-0.5 hover:shadow-elevated"
               key={item.title}
             >
               <div className="mb-5 flex items-center justify-between gap-4">

@@ -70,7 +70,7 @@ function Services() {
         <div className="grid grid-cols-1 gap-[18px] lg:grid-cols-2">
           {services.map((service, index) => (
             <article
-              className="rounded-lg border border-line bg-white p-6 shadow-card"
+              className="rounded-lg border border-line bg-white p-6 shadow-card transition hover:-translate-y-0.5 hover:shadow-elevated"
               key={service.title}
             >
               <div className="mb-5 flex items-center justify-between gap-4">

@@ -73,6 +73,12 @@ img {
   h4 {
     font-weight: 700;
   }
+
+  /* Klavye ile gezinenler için belirgin odak halkası. */
+  :where(a, button, input, select, textarea, [tabindex]):focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
 }
 
 /* Hareket hassasiyeti olan kullanıcılar için animasyonları yumuşat. */
