@@ -1,3 +1,19 @@
+// İletişim/konum bilgileri ortam değişkenlerinden okunur (tek kaynak).
+// Bunlar gizli değildir; fallback'ler sayesinde Vercel env'i tanımlı
+// olmasa bile site çalışmaya devam eder. .env / .env.example'a bakınız.
+const env = import.meta.env
+const PHONE = env.VITE_PHONE ?? '+905357661180'
+const PHONE_DISPLAY = env.VITE_PHONE_DISPLAY ?? '0535 766 11 80'
+const WHATSAPP_NUMBER = env.VITE_WHATSAPP_NUMBER ?? '905357661180'
+const EMAIL = env.VITE_EMAIL ?? 'satis@hedefofis.com'
+const INSTAGRAM_URL =
+  env.VITE_INSTAGRAM_URL ?? 'https://www.instagram.com/hedef.ofis/'
+const MAPS_QUERY =
+  env.VITE_MAPS_QUERY ??
+  'HEDEF%20OF%C4%B0S%20OTOMASYON%20S%C4%B0STEMLER%C4%B0%20SANAY%C4%B0%20VE%20T%C4%B0CARET-%20TEK%C4%B0N%20GELD%C4%B0'
+const MAPS_SEARCH_URL = `https://www.google.com/maps/search/?api=1&query=${MAPS_QUERY}`
+const MAPS_EMBED_URL = `https://maps.google.com/maps?q=${MAPS_QUERY}&t=&z=16&ie=UTF8&iwloc=&output=embed`
+
 export const siteContent = {
   company: {
     name: "Hedef Ofis Büro Makineleri",
@@ -15,7 +31,7 @@ export const siteContent = {
   ],
   whatsapp: {
     label: "WhatsApp'tan iletişime geç",
-    href: "https://wa.me/905357661180",
+    href: `https://wa.me/${WHATSAPP_NUMBER}`,
   },
   home: {
     eyebrow: "Baskı Çözümleri",
@@ -322,16 +338,16 @@ export const siteContent = {
       {
         label: "Telefon",
         icon: "phone",
-        value: "0535 766 11 80",
-        href: "tel:+905357661180",
+        value: PHONE_DISPLAY,
+        href: `tel:${PHONE}`,
         actionLabel: "Ara",
         note: "Teknik servis, teklif ve cihaz desteği için telefonla ulaşabilirsiniz.",
       },
       {
         label: "E-posta",
         icon: "mail",
-        value: "satis@hedefofis.com",
-        href: "mailto:satis@hedefofis.com",
+        value: EMAIL,
+        href: `mailto:${EMAIL}`,
         actionLabel: "E-posta gönder",
         note: "Ürün, servis ve teklif taleplerinizi e-posta ile iletebilirsiniz.",
       },
@@ -340,7 +356,7 @@ export const siteContent = {
         icon: "map",
         value:
           "Sahabiye Mah. İstasyon Cad Hürriyet Apt. Bina No:60 Daire No:20, 38280 Kocasinan/Kayseri",
-        href: "https://www.google.com/maps/search/?api=1&query=HEDEF%20OF%C4%B0S%20OTOMASYON%20S%C4%B0STEMLER%C4%B0%20SANAY%C4%B0%20VE%20T%C4%B0CARET-%20TEK%C4%B0N%20GELD%C4%B0",
+        href: MAPS_SEARCH_URL,
         actionLabel: "Haritada aç",
         note: "Kayseri/Kocasinan adresimize ulaşım için harita bağlantısını kullanabilirsiniz.",
       },
@@ -349,10 +365,8 @@ export const siteContent = {
       eyebrow: "Konum",
       title: "Kayseri/Kocasinan adresimiz",
       text: "Sahabiye Mah. İstasyon Cad. Hürriyet Apt. Bina No:60 Daire No:20, 38280 Kocasinan/Kayseri adresinden bize ulaşabilirsiniz.",
-      mapUrl:
-        "https://www.google.com/maps/search/?api=1&query=HEDEF%20OF%C4%B0S%20OTOMASYON%20S%C4%B0STEMLER%C4%B0%20SANAY%C4%B0%20VE%20T%C4%B0CARET-%20TEK%C4%B0N%20GELD%C4%B0",
-      embedUrl:
-        "https://maps.google.com/maps?q=HEDEF%20OF%C4%B0S%20OTOMASYON%20S%C4%B0STEMLER%C4%B0%20SANAY%C4%B0%20VE%20T%C4%B0CARET-%20TEK%C4%B0N%20GELD%C4%B0&t=&z=16&ie=UTF8&iwloc=&output=embed",
+      mapUrl: MAPS_SEARCH_URL,
+      embedUrl: MAPS_EMBED_URL,
     },
     social: {
       eyebrow: "Sosyal Medya",
@@ -364,7 +378,7 @@ export const siteContent = {
           label: "Instagram",
           icon: "instagram",
           value: "@hedef.ofis",
-          href: "https://www.instagram.com/hedef.ofis/",
+          href: INSTAGRAM_URL,
         },
       ],
     },

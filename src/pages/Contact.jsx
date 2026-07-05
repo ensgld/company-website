@@ -36,8 +36,10 @@ function Contact() {
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          // Web3Forms Ücretsiz Erişim Anahtarı (Bu alan projenin çalışması için optimize edilmiştir)
-          access_key: 'fed507d4-82f9-4f8c-8c4a-77cdb78e1612', // Hedef Ofis web form alıcısı tokeni
+          // Web3Forms erişim anahtarı ortam değişkeninden okunur (.env / Vercel env).
+          // Not: Bu anahtar client-side kullanım içindir; asıl koruma Web3Forms
+          // panelindeki domain whitelist + captcha ile sağlanır.
+          access_key: import.meta.env.VITE_WEB3FORMS_KEY,
           name: formData.name,
           email: formData.email,
           phone: formData.phone,
