@@ -23,9 +23,16 @@ function Contact() {
     message: ''
   })
   const [status, setStatus] = useState('idle') // 'idle' | 'loading' | 'success' | 'error'
+  // Bot tuzağı (honeypot): gerçek kullanıcılar bu alanı boş bırakır.
+  const [botField, setBotField] = useState('')
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    // Honeypot doluysa gönderimi sessizce yut (spam bot).
+    if (botField) {
+      setStatus('success')
+      return
+    }
     setStatus('loading')
 
     try {
@@ -190,7 +197,7 @@ function Contact() {
 
           <div className="rounded-lg border border-line bg-white p-6 shadow-elevated sm:p-8">
             {status === 'success' ? (
-              <div className="flex flex-col items-center py-6 text-center">
+              <div className="flex flex-col items-center py-6 text-center" role="status" aria-live="polite">
                 <CheckCircle className="mb-4 text-green-600 animate-bounce" size={56} strokeWidth={1.5} />
                 <h3 className="mb-2 text-2xl font-black text-ink">Mesajınız Gönderildi!</h3>
                 <p className="max-w-[360px] text-sm leading-relaxed text-muted">
@@ -207,8 +214,20 @@ function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
+                {/* Honeypot — ekran okuyucu ve kullanıcıdan gizli */}
+                <input
+                  type="text"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  className="hidden"
+                  value={botField}
+                  onChange={(e) => setBotField(e.target.value)}
+                />
+                <div aria-live="polite">
                 {status === 'error' && (
-                  <div className="flex items-start gap-3 rounded-md bg-red-50 p-4 text-accent border border-red-100">
+                  <div className="flex items-start gap-3 rounded-md bg-red-50 p-4 text-accent border border-red-100" role="alert">
                     <AlertTriangle className="shrink-0" size={20} />
                     <div>
                       <strong className="block text-sm font-bold">Gönderim Başarısız!</strong>
@@ -216,13 +235,17 @@ function Contact() {
                     </div>
                   </div>
                 )}
+                </div>
 
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <div>
-                    <label className="mb-1.5 block text-xs font-extrabold uppercase tracking-wider text-muted">Adınız Soyadınız *</label>
+                    <label htmlFor="contact-name" className="mb-1.5 block text-xs font-extrabold uppercase tracking-wider text-muted">Adınız Soyadınız *</label>
                     <input
+                      id="contact-name"
+                      name="name"
                       type="text"
                       required
+                      autoComplete="name"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       className="w-full rounded-md border border-line bg-white px-4 py-3 text-sm text-ink outline-none transition focus:border-primary focus:ring-1 focus:ring-primary"
@@ -230,10 +253,13 @@ function Contact() {
                     />
                   </div>
                   <div>
-                    <label className="mb-1.5 block text-xs font-extrabold uppercase tracking-wider text-muted">Telefon Numaranız *</label>
+                    <label htmlFor="contact-phone" className="mb-1.5 block text-xs font-extrabold uppercase tracking-wider text-muted">Telefon Numaranız *</label>
                     <input
+                      id="contact-phone"
+                      name="phone"
                       type="tel"
                       required
+                      autoComplete="tel"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="w-full rounded-md border border-line bg-white px-4 py-3 text-sm text-ink outline-none transition focus:border-primary focus:ring-1 focus:ring-primary"
@@ -243,9 +269,12 @@ function Contact() {
                 </div>
 
                 <div>
-                  <label className="mb-1.5 block text-xs font-extrabold uppercase tracking-wider text-muted">E-posta Adresiniz</label>
+                  <label htmlFor="contact-email" className="mb-1.5 block text-xs font-extrabold uppercase tracking-wider text-muted">E-posta Adresiniz</label>
                   <input
+                    id="contact-email"
+                    name="email"
                     type="email"
+                    autoComplete="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="w-full rounded-md border border-line bg-white px-4 py-3 text-sm text-ink outline-none transition focus:border-primary focus:ring-1 focus:ring-primary"
@@ -254,8 +283,10 @@ function Contact() {
                 </div>
 
                 <div>
-                  <label className="mb-1.5 block text-xs font-extrabold uppercase tracking-wider text-muted">İletişim Konusu</label>
+                  <label htmlFor="contact-subject" className="mb-1.5 block text-xs font-extrabold uppercase tracking-wider text-muted">İletişim Konusu</label>
                   <select
+                    id="contact-subject"
+                    name="subject"
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                     className="w-full rounded-md border border-line bg-white px-4 py-3 text-sm text-ink outline-none transition focus:border-primary focus:ring-1 focus:ring-primary"
@@ -269,8 +300,10 @@ function Contact() {
                 </div>
 
                 <div>
-                  <label className="mb-1.5 block text-xs font-extrabold uppercase tracking-wider text-muted">Mesajınız *</label>
+                  <label htmlFor="contact-message" className="mb-1.5 block text-xs font-extrabold uppercase tracking-wider text-muted">Mesajınız *</label>
                   <textarea
+                    id="contact-message"
+                    name="message"
                     required
                     rows={4}
                     value={formData.message}
