@@ -111,11 +111,12 @@ function About() {
           <video
             className="aspect-video w-full bg-[#111827] object-cover"
             src={introVideo}
+            poster={officeCultureImage}
             muted
             loop
             playsInline
             controls
-            preload="metadata"
+            preload="none"
           />
         </div>
       </section>

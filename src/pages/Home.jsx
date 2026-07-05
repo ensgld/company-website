@@ -122,6 +122,9 @@ function Home() {
                   ].join(' ')}
                   src={heroSlideImages[slide.key]}
                   alt={slide.alt}
+                  loading={index === 0 ? 'eager' : 'lazy'}
+                  fetchPriority={index === 0 ? 'high' : 'low'}
+                  decoding="async"
                   key={slide.key}
                 />
               ))}
