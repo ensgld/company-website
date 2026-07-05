@@ -339,6 +339,34 @@ export const siteContent = {
       },
     ],
   },
+  faq: {
+    eyebrow: "Sık Sorulan Sorular",
+    title: "Aklınıza takılan soruları yanıtladık.",
+    description:
+      "Kiralama, teknik servis ve satış süreçleriyle ilgili en sık sorulan sorular.",
+    items: [
+      {
+        q: "Kopya başı kiralık fotokopi makinesi nasıl çalışır?",
+        a: "Kopya başı kiralama modelinde cihaz size teslim edilir ve yalnızca yaptığınız baskı adedi üzerinden ödeme yaparsınız. Bakım, teknik servis ve sarf malzeme desteği kiralama kapsamında planlanır; böylece baskı maliyetlerinizi öngörülebilir şekilde yönetirsiniz.",
+      },
+      {
+        q: "Teknik servis talebine ne kadar sürede dönüş yapıyorsunuz?",
+        a: "Talebinizi telefon, WhatsApp veya iletişim formu üzerinden ilettiğinizde en geç 2 saat içinde dönüş sağlıyor, Kayseri geneline yerinde teknik servis desteği veriyoruz.",
+      },
+      {
+        q: "Hangi marka ve cihazlara servis veriyorsunuz?",
+        a: "Develop Kayseri Bölge Bayisi olmakla birlikte Konica Minolta, Canon, Kyocera, Epson, HP, Sharp ve Xerox dahil farklı marka yazıcı ve fotokopi makinelerine servis, bakım ve sarf malzeme desteği sağlıyoruz.",
+      },
+      {
+        q: "Toner, kartuş ve sarf malzeme temini yapıyor musunuz?",
+        a: "Evet. Yazıcı ve fotokopi makineleriniz için toner, kartuş ve sarf malzeme teminini düzenli olarak sağlayarak baskı süreçlerinizin kesintisiz devam etmesini destekliyoruz.",
+      },
+      {
+        q: "Hangi bölgelere hizmet veriyorsunuz?",
+        a: "Kayseri ve çevresine, merkez Kocasinan ofisimizden satış, servis, kiralama ve sarf malzeme hizmeti veriyoruz.",
+      },
+    ],
+  },
   contact: {
     eyebrow: "İletişim",
     title: "Teklif, servis veya ürün desteği için bize ulaşın.",

@@ -8,6 +8,7 @@ import suppliesImage from '../assets/hero/sarf-malzeme-destegi.webp'
 import serviceTechnicianImage from '../assets/hero/teknik-servis-elemani.webp'
 import BrandSupport from '../components/BrandSupport.jsx'
 import DocumentMetadata from '../components/DocumentMetadata.jsx'
+import Faq from '../components/Faq.jsx'
 import ServiceProcess from '../components/ServiceProcess.jsx'
 import WhyUs from '../components/WhyUs.jsx'
 import { siteContent } from '../data/siteContent.js'
@@ -31,15 +32,21 @@ const heroSlideImages = {
 function Home() {
   const { home, contactInfo } = siteContent
   const [activeSlide, setActiveSlide] = useState(0)
+  const [paused, setPaused] = useState(false)
   const activeHeroSlide = home.heroSlides[activeSlide]
 
   useEffect(() => {
+    // Kullanıcı üzerine gelince veya hareket hassasiyeti tercih edilmişse
+    // otomatik geçişi durdur.
+    if (paused) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
     const timer = window.setInterval(() => {
       setActiveSlide((current) => (current + 1) % home.heroSlides.length)
     }, 5000)
 
     return () => window.clearInterval(timer)
-  }, [home.heroSlides.length])
+  }, [home.heroSlides.length, paused])
 
   return (
     <>
@@ -100,7 +107,13 @@ function Home() {
 
         <div className="order-first lg:order-none">
           <div className="overflow-hidden rounded-lg border border-line bg-white shadow-elevated-lg">
-            <div className="relative aspect-[16/11] overflow-hidden bg-surface">
+            <div
+              className="relative aspect-[16/11] overflow-hidden bg-surface"
+              onMouseEnter={() => setPaused(true)}
+              onMouseLeave={() => setPaused(false)}
+              onFocus={() => setPaused(true)}
+              onBlur={() => setPaused(false)}
+            >
               {home.heroSlides.map((slide, index) => (
                 <img
                   className={[
@@ -183,7 +196,7 @@ function Home() {
             }
             return (
               <article
-                className={`rounded-lg border border-line bg-white p-6 shadow-card ${spanClass}`}
+                className={`rounded-lg border border-line bg-white p-6 shadow-card transition hover:-translate-y-0.5 hover:shadow-elevated ${spanClass}`}
                 key={item.title}
               >
               <div className="mb-[18px] flex items-center justify-between gap-4">
@@ -213,6 +226,8 @@ function Home() {
       <WhyUs className="mx-auto w-[min(1120px,calc(100%-28px))] border-t border-line py-[72px] pt-[58px] md:w-[min(1120px,calc(100%-40px))]" />
 
       <BrandSupport className="mx-auto w-[min(1120px,calc(100%-28px))] border-t border-line py-[72px] pt-[58px] md:w-[min(1120px,calc(100%-40px))]" />
+
+      <Faq className="mx-auto w-[min(1120px,calc(100%-28px))] border-t border-line py-[72px] pt-[58px] md:w-[min(1120px,calc(100%-40px))]" />
 
       <section className="mx-auto w-[min(1120px,calc(100%-28px))] pb-[72px] md:w-[min(1120px,calc(100%-40px))]">
         <div className="grid grid-cols-1 items-center gap-6 rounded-lg border border-line bg-white p-6 shadow-elevated lg:grid-cols-[1fr_auto] lg:p-8">
