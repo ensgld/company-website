@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { BadgeCheck, Copy, Package, Printer, Wrench } from 'lucide-react'
+import { BadgeCheck, Copy, Package, Phone, Printer, Wrench } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import machineTypesImage from '../assets/hero/farkli-makine-turleri.webp'
 import printingHeroImage from '../assets/hero/office-printing-hero.webp'
@@ -29,7 +29,7 @@ const heroSlideImages = {
 }
 
 function Home() {
-  const { home } = siteContent
+  const { home, contactInfo } = siteContent
   const [activeSlide, setActiveSlide] = useState(0)
   const activeHeroSlide = home.heroSlides[activeSlide]
 
@@ -67,11 +67,18 @@ function Home() {
               {home.primaryAction.label}
             </Link>
             <Link
-              className="inline-flex min-h-12 w-full items-center justify-center rounded-md border border-line bg-white px-[18px] font-extrabold text-primary-dark no-underline sm:w-auto"
+              className="inline-flex min-h-12 w-full items-center justify-center rounded-md border border-line bg-white px-[18px] font-extrabold text-primary-dark no-underline hover:bg-surface sm:w-auto"
               to={home.secondaryAction.to}
             >
               {home.secondaryAction.label}
             </Link>
+            <a
+              className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-md border border-line bg-white px-[18px] font-extrabold text-primary-dark no-underline hover:bg-surface sm:w-auto"
+              href={contactInfo.phoneHref}
+            >
+              <Phone aria-hidden="true" size={18} strokeWidth={2.4} />
+              {home.callAction.label}
+            </a>
           </div>
 
           <div className="mt-8 grid grid-cols-1 overflow-hidden rounded-lg border border-line bg-white shadow-card sm:grid-cols-3">
@@ -127,6 +134,24 @@ function Home() {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="mx-auto w-[min(1120px,calc(100%-28px))] pb-[52px] md:w-[min(1120px,calc(100%-40px))]">
+        <div className="grid grid-cols-2 gap-[18px] lg:grid-cols-4">
+          {home.stats.map((stat) => (
+            <div
+              className="rounded-lg border border-line bg-white p-6 text-center shadow-card"
+              key={stat.label}
+            >
+              <strong className="block text-[clamp(28px,4vw,40px)] font-extrabold leading-none text-primary">
+                {stat.value}
+              </strong>
+              <span className="mt-2.5 block text-sm font-bold leading-snug text-muted">
+                {stat.label}
+              </span>
+            </div>
+          ))}
         </div>
       </section>
 
